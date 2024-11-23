@@ -1,10 +1,10 @@
 <x-layout>
     <div class="space-y-5 p-5">
 
-        <section class="text-center space-y-5 p-6  ">
-            <h1 class="text-4xl font-bold ">
+        <section class="space-y-5 p-6  ">
+            <x-section-title>
                 Let's Find You A Great Job
-            </h1>
+            </x-section-title>
             <form>
                 <input type="text" class="bg-white/5 p-4 placeholder-white/25 rounded-xl max-w-screen-md w-full"
                     placeholder="I'm looking for..." />
