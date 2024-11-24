@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreJobRequest;
 use App\Http\Requests\UpdateJobRequest;
 use App\Models\Job;
 use App\Models\Tag;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class JobController extends Controller
 {
@@ -23,17 +27,36 @@ class JobController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): void
+    public function create(): View
     {
-        //
+        return view('jobs.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreJobRequest $request): void
+    public function store(Request $request): RedirectResponse
     {
-        //
+
+        $attributes = $request->validate([
+            'title' => ['required', 'min:3'],
+            'salary' => ['required', 'min:3'],
+            'location' => ['required', 'min:3'],
+            'schedule' => ['required', Rule::in(['Full Time', 'Part Time', 'Gig'])],
+            'url' => ['required', 'url'],
+            'tags' => ['required', 'min:3'],
+        ]);
+
+        $attributes['featured'] = $request->has('featured');
+        $job = Auth::user()->employer->jobs()->create(Arr::except($attributes, 'tags'));
+
+        if ($attributes['featured']) {
+            foreach (explode(',', $attributes['tags']) as $tag) {
+                $job->tag($tag);
+            }
+        }
+
+        return redirect('/');
     }
 
     /**

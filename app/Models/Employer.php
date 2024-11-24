@@ -12,6 +12,8 @@ class Employer extends Model
     /** @use HasFactory<\Database\Factories\EmployerFactory> */
     use HasFactory;
 
+    protected $fillable = ['name','logo'];
+
     /**
      * @return BelongsTo<User,Employer>
      */

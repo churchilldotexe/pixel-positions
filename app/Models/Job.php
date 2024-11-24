@@ -12,6 +12,8 @@ class Job extends Model
     /** @use HasFactory<\Database\Factories\JobFactory> */
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     /**
      * @return BelongsTo<Employer,Job>
      */
