@@ -3,7 +3,11 @@
 <x-card-article>
     <div class="self-start text-xs">{{ $job->employer->name }}</div>
     <div class="p-2 space-y-4">
-        <h2 class="font-bold group-hover:text-blue-600">{{ $job->title }}</h2>
+        <a href="{{ $job->url }}" target="__blank">
+            <h2 class="font-bold group-hover:text-blue-600">
+                {{ $job->title }}
+            </h2>
+        </a>
         <p class="text-xs"> {{ $job->schedule }} - from {{ $job->salary }} </p>
     </div>
     <div class="flex justify-between items-center">

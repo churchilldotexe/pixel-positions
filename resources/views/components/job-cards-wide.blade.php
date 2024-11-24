@@ -7,7 +7,10 @@
 
     <div class="flex-1 flex flex-col">
         <p class=" py-1 text-xs">{{ $job->employer->name }}</p>
-        <h2 class="flex-1 text-xl font-bold">{{ $job->title }}</h2>
+
+        <a href="{{ $job->url }}" target="__blank">
+            <h2 class="flex-1 text-xl font-bold">{{ $job->title }}</h2>
+        </a>
         <p class="text-xs"> {{ $job->schedule }} - from {{ $job->salary }} </p>
     </div>
 
@@ -15,7 +18,6 @@
         <div class="self-end">
             <a class="rounded-full bg-zinc-950 border border-white/10 hover:bg-white/20 transition-colors duration-300 px-2 py-1 text-center"
                 href="">{{ $job->location }}</a>
-            <!-- TODO: date time  -->
             <a class="rounded-full bg-zinc-950 border border-white/10 hover:bg-white/20 transition-colors duration-300 px-2 py-1 text-center"
                 href="">22h</a>
         </div>
