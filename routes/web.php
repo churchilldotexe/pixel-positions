@@ -22,4 +22,4 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [AuthController::class, 'store']);
 });
 
-Route::post('/logout', [AuthController::class, 'detroy']);
+Route::delete('/logout', [AuthController::class, 'destroy']);

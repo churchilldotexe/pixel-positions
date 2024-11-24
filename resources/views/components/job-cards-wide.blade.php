@@ -2,7 +2,7 @@
 
 <x-card-article variant="wide">
     <div>
-        <x-job-logo :width="90" />
+        <x-job-logo :employer="$job->employer" :width="90" />
     </div>
 
     <div class="flex-1 flex flex-col">

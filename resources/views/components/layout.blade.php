@@ -26,15 +26,20 @@
                 <a href="">Companies</a>
             </div>
             @guest
-                <div class="space-x-5 font-bold text-white/90">
+                <div class=" space-x-5 font-bold text-white/90">
                     <a href="/register">Register</a>
                     <a href="/login">Login</a>
                 </div>
             @endguest
 
             @auth
-                <div class="text-white/95">
+                <div class="flex gap-4 text-white/95 font-semibold items-center">
                     <a href="/jobs/create">Post a job</a>
+                    <form method="POST" action="/logout">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="bg-red-700 p-1 rounded font-semibold">Logout</button>
+                    </form>
                 </div>
             @endauth
 

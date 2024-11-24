@@ -16,6 +16,6 @@
                 <x-tag :tagId="$tag->id">{{ $tag->name }}</x-tag>
             @endforeach
         </ul>
-        <x-job-logo />
+        <x-job-logo :employer="$job->employer" />
     </div>
 </x-card-article>
