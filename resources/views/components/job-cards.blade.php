@@ -9,7 +9,7 @@
     <div class="flex justify-between items-center">
         <ul class="flex gap-2">
             @foreach ($job->tags as $tag)
-                <x-tag>{{ $tag->name }}</x-tag>
+                <x-tag :tagId="$tag->id">{{ $tag->name }}</x-tag>
             @endforeach
         </ul>
         <x-job-logo />
